@@ -2,10 +2,15 @@ public class Arrays {
 
 	public static void main(String[] args) {
 		int[] data = new int[10];
+		int[] dataB = new int[12];
 		
 		for(int i=0; i < data.length; i++) {
 			data[i] = 10 - i;
 		 }
+		for(int i=0; i < dataB.length; i++) {
+			dataB[i] = 12 - i;
+		 }
+
 		
 		doubleIt(data);
 		printArray(data);
@@ -14,9 +19,16 @@ public class Arrays {
 
 		twoLargest(data);
 
-		closestToZero(data);
+		int smallestIndex = 0;
+		smallestIndex = closestToZero(data);
+		System.out.println("Smallest index = " + smallestIndex);
 		//return the index of the number closest to zero in the array
 		
+		int smashLength = 0;
+		smashLength = data.length + dataB.length;
+		int[] smash = new int[smashLength];
+		smash(data, dataB, smash);
+		printArray(smash);
 		//smash, takes two arrays and returns a and b together as one array
 
 	}
@@ -59,8 +71,27 @@ public class Arrays {
 		System.out.println("Two largest elements = " + largest1 + " & " + largest2);
 	}
 
-	public static void closestToZero(int[] a) {
-		
+	public static int closestToZero(int[] a) {
+		int smallestValue = a[0];
+		int smallestIndex = 0;
+		for (int i=0; i < a.length; i++) {
+			if (a[i] < smallestValue) {
+				smallestValue = a[i];
+				smallestIndex = i;
+			}
+		}
+		return smallestIndex;
+	}
+
+	public static void smash(int[] a, int[] b, int[] smash) {
+		int smashLength = smash.length;
+		for (int i = 0; i < smash.length; i++) {
+			if (i < a.length) {
+				smash[i] = a[i];	
+			} else {
+				smash[i] = b[i-a.length];
+			}
+		}
 	}
 
 	public static void printArray(int[] a) {
@@ -69,5 +100,6 @@ public class Arrays {
 			System.out.println();
 		}
 	}
+
 	
 }
