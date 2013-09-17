@@ -14,7 +14,6 @@ public class Strings {
 		
 		// for (int i=0; i < str.length(); i++) {
 		// 	System.out.println(str.charAt(i));
-			
 		// }
 
 		// for (int i=0; i < str.length()-1; i++) {
@@ -29,23 +28,20 @@ public class Strings {
 
 		//System.out.println(count("people", "e"));
 
-		//if (hasAnA("David")) {
-		//	System.out.println("There is an A");
-		//} else {
-		//	System.out.println("Doesn't have an A");
-		//}
-
-		// if (isPalindrome("")) {
-		// 	System.out.println("Is a palindrome");
-		// } else {
-		// 	System.out.println("Isn't a palindrome");
-		// }
-		
-		if (isAbecedarian("abcxz")) {
+		if (isAbecedarian("abcdefa")) {
 			System.out.println("Is abecedarian");
 		} else {
 			System.out.println("Isn't abecedarian");
 		}
+
+		if (isDupledrome("aabbzzdd")) {
+			System.out.println("Is a dupledrome");
+		} else {
+			System.out.println("Isn't a dupledrome");
+		}
+
+		String captainCrunchString = captainCrunch("abcd ABCD", 13);
+		System.out.println(captainCrunchString);
 	}
 
 	public static int count(String s, String t) {
@@ -59,34 +55,38 @@ public class Strings {
 		return count;
 	}
 
-	public static boolean hasAnA(String s) {
-		String a = "a";
-		for (int i=0; i < s.length(); i++) {
-			if ((a.substring(0, 1)).equals(s.substring(i, i+1))) {
-				return true;
+	public static boolean isAbecedarian(String s) {
+		for (int i=0; i < s.length()-1; i++) {
+			if (s.charAt(i) > s.charAt(i+1)) {
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
-	// public static boolean isPalindrome(String s) {
-	// 	for (int i=0; i < s.length(); i++) {
-	// 		if ((s.substring(i)).equals(s.substring((s.length()-i-1)))) {
-	// 			return true;
-	// 		}
-	// 	}
-
-	// 	return false;
-	//}
-	
-	public static boolean isAbecedarian(String s) {
-		for (int i=0; s.charAt(i) < s.charAt(i+1); i++) {
-			if (i == s.length()-1) {
-				return true;
+	public static boolean isDupledrome(String s) {
+		for (int i=0; i < s.length(); i+=2) {
+			if (s.length() % 2 != 0 ) {
+				return false;
+			} else {
+				if (s.charAt(i) != s.charAt(i+1)) {
+					return false;
+				}
 			}
-				
 		}
-		return false;
+		return true;
+	}
+
+	public static String captainCrunch(String s, int addTo) {
+		//s.replace(s.charAt(1), s.charAt(1+1));
+		//for (int i=0; i < s.length()-1; i++) {
+
+			//if ((s.charAt(i) >= 65 && s.charAt(i) <= 77) || (s.charAt(i) >= 97 && s.charAt(i) <= 109)) {
+			//	s.replace(s.charAt(i), s.charAt(i+1));
+			//} 
+		//}
+		return s;
+		
 	}
 
 	public static boolean contains(String s, String t) {
